@@ -27,7 +27,7 @@ X_scaled = x_scaler.fit_transform(X_raw)
 
 # 4. Torch 텐서 변환 (double precision, 반드시 CPU 사용!)
 train_x = torch.tensor(X_scaled, dtype=torch.double).cpu()
-train_y = torch.tensor(Y_raw, dtype=torch.double).cpu()
+train_y = torch.tensor(Y_raw, dtype=torch.double).detach().cpu()
 
 
 # GPR 모델
