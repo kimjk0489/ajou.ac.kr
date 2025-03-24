@@ -8,6 +8,8 @@ from gpytorch.mlls import ExactMarginalLogLikelihood
 from botorch.fit import fit_gpytorch_mll
 from botorch.acquisition.analytic import ExpectedImprovement
 from botorch.optim import optimize_acqf
+from botorch.optim.fit import fit_gpytorch_mll_torch
+
 
 # 1. 제목
 st.title("🔬 Slurry 조성 추천 (Bayesian Optimization 기반)")
@@ -36,7 +38,8 @@ x_tensor = torch.tensor(X_scaled, dtype=torch.double)
 # 모델 학습
 model = SingleTaskGP(x_tensor, y_tensor)
 mll = ExactMarginalLogLikelihood(model.likelihood, model)
-fit_gpytorch_mll(mll, optimizer_kwargs={"bounds": None})  # 🔧 수정된 줄
+fit_gpytorch_mll_torch(mll)  # 🔧 수정
+
 
 
 # 6. 획득 함수 정의 (EI 사용)
