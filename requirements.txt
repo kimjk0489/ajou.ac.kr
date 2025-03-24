@@ -4,4 +4,3 @@ scikit-learn
 torch==2.2.0
 botorch
 gpytorch
-numpy
