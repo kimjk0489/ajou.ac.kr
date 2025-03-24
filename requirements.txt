@@ -1,7 +1,7 @@
-streamlit==1.43.2
-torch==2.2.0
-botorch==0.9.5
-gpytorch==1.11
-scikit-learn
+streamlit
 pandas
+scikit-learn
+torch==2.2.0
+botorch
+gpytorch
 numpy
