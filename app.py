@@ -25,11 +25,14 @@ Y_raw = df[y_cols].values
 x_scaler = MinMaxScaler()
 X_scaled = x_scaler.fit_transform(X_raw)
 
-train_x = torch.tensor(X_scaled, dtype=torch.double)
-train_y = torch.tensor(Y_raw, dtype=torch.double)
+# 4. Torch 텐서 변환 (double precision, 반드시 CPU 사용!)
+train_x = torch.tensor(X_scaled, dtype=torch.double).cpu()
+train_y = torch.tensor(Y_raw, dtype=torch.double).cpu()
+
 
 # GPR 모델
 model = SingleTaskGP(train_x, train_y)
+model = model.to("cpu")  # <- 강제적으로 CPU로
 mll = ExactMarginalLogLikelihood(model.likelihood, model)
 fit_gpytorch_mll(mll)
 
