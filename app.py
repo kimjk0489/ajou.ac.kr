@@ -33,10 +33,11 @@ X_scaled = x_scaler.fit_transform(X)
 y_tensor = torch.tensor(Y, dtype=torch.double)
 x_tensor = torch.tensor(X_scaled, dtype=torch.double)
 
-# 5. 모델 학습
+# 모델 학습
 model = SingleTaskGP(x_tensor, y_tensor)
 mll = ExactMarginalLogLikelihood(model.likelihood, model)
-fit_gpytorch_mll(mll)
+fit_gpytorch_mll(mll, optimizer_kwargs={"bounds": None})  # 🔧 수정된 줄
+
 
 # 6. 획득 함수 정의 (EI 사용)
 best_y = y_tensor.max()
