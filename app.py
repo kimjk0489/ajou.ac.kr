@@ -3,7 +3,6 @@
 import streamlit as st
 import torch
 import pandas as pd
-import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from botorch.models import SingleTaskGP
 from botorch.fit import fit_gpytorch_mll
@@ -62,7 +61,7 @@ if st.button("📌 추천 조성 계산하기"):
             raw_samples=20,
         )
 
-        candidate_np = candidate_scaled.detach().numpy()
+        candidate_np = candidate_scaled.detach()
         candidate_original = x_scaler.inverse_transform(candidate_np)
 
         # -------------------- ✅ 결과 출력 --------------------
