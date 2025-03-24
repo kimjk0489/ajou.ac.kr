@@ -1,7 +1,6 @@
-streamlit==1.43.2
+streamlit
+torch==2.2.0
+gpytorch==1.11
+botorch==0.9.5
 pandas
 scikit-learn
-numpy
-torch==2.2.0
-gpytorch
-botorch
