@@ -33,7 +33,8 @@ x_scaler = MinMaxScaler()
 X_scaled = x_scaler.fit_transform(X_raw)
 
 train_x = torch.tensor(X_scaled, dtype=torch.double)
-train_y = torch.tensor(Y_raw, dtype=torch.double).unsqueeze(-1)  # (N, 1)
+train_y = torch.tensor(Y_raw, dtype=torch.double)  # (N, 1) 이미 2D임!
+
 
 # -------------------- 📈 GP 모델 학습 --------------------
 if st.button("📌 추천 조성 계산하기"):
